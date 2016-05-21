@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <title>Hausarbeit2016</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js"></script>
+    <script>
+    function ziehen(ev) {
+	ev.dataTransfer.setData('text', ev.target.id);
+}
+
+function ablegenErlauben(ev) {
+	ev.preventDefault();
+}
+
+function ablegen(ev) {
+	ev.preventDefault();
+	var data = ev.dataTransfer.getData('text');
+	ev.target.appendChild(document.getElementById(data));
+}
+
+
+</script>
+  </head>
+    <body>
+
+
+
+            <div id="loginField">
+              <h3>Willkommen zum Spiel SuperHirn</h3>
+              <label>USERNAME:</label></br>
+              <input type="text" id="usernameIN" placeholder="Benutzername"></br>
+              <input type="submit" id="playBTN" class="button" value="PLAY">
+            </div>
+      <!--MemberArea HTML Design//-->
+        <div id="memberArea">
+          <h1 class="helloUser"> Willkommen <span id="showUsername"> </span></h1>
+          <span id="onlineUser">Eingeloggte Spieler: </span>&nbsp;<span id="nbrUserOnline"></span>
+          <span id="clock"></span>
+        <hr>
+          <div id="navbar">
+            <button id="logout">Ausloggen</button></br>
+            <labal>bereit für ein Spiel?</label>
+            <input type="checkbox" id="ready">
+          </div>#
+          <!-- Gameboard Template //-->
+          <div id="gameboard">
+          <table id="mastermindGameBoard">
+            <tr id="7">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="6">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr id="5">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="4">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="3">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="2">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr id="1">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr id="activeRow" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="rot"></div></td>
+		            <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="gelb" ></div></td>
+                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="grün"></div></td>
+                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="lila"></div></td>
+                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="blau"></div></td>
+                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="braun"></div></td>
+              </tr>
+          </table>
+          <button id="break">Pause</button><button id="start">wieder da</button><button id="check">Check</button>
+        </div>
+        </div>
+    </body>
+
+    </html>
