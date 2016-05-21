@@ -58,7 +58,7 @@ td{
   margin-right: auto;
   text-align: center;
 }
-.button {
+.buttonFrontPage {
     background-color: #e6e6fa; /* Green */
     border: none;
     color: black;
@@ -69,6 +69,9 @@ td{
     font-size: 12px;
     margin: 4px 2px;
     cursor: pointer;
+}
+.buttonFrontPage:hover{
+    background-color: #ff3300; /* Green */
 }
 input[type=text] {
   width:50%;
