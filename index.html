@@ -19,22 +19,91 @@ function ablegen(ev) {
 	var data = ev.dataTransfer.getData('text');
 	ev.target.appendChild(document.getElementById(data));
 }
+function init(){
 
-
+  var btnTwo = document.getElementById("btnTwo");
+  var btnOne = document.getElementById("btnOne");
+  var btnThree = document.getElementById("btnThree");
+  btnOne.addEventListener("click",function(){
+    console.log("maus auf 1");
+    document.getElementById("login").style.display = "block";
+    document.getElementById("help").style.display = "none";
+    document.getElementById("highscore").style.display = "none";
+    btnOne.setAttribute("class","btnActive");
+    btnThree.removeAttribute("class");
+    btnTwo.removeAttribute("class");
+  });
+  btnTwo.addEventListener("click",function(){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("help").style.display = "block";;
+    document.getElementById("highscore").style.display = "none";;
+    btnTwo.setAttribute("class","btnActive");
+    btnOne.removeAttribute("class");
+    btnThree.removeAttribute("class");
+  })
+  btnThree.addEventListener("click",function(){
+    document.getElementById("login").style.display = "none";
+    document.getElementById("help").style.display = "none";
+    document.getElementById("highscore").style.display = "block";
+    btnThree.setAttribute("class","btnActive");
+    btnOne.removeAttribute("class");
+    btnTwo.removeAttribute("class");
+  })
+}window.addEventListener("load",init);
 </script>
+<style>
+#help{
+  display: none;
+  background-color: lightblue;
+  height:30%;
+  width:50%;
+}
+#highscore{
+  display: none;
+  background-color: lightblue;
+  height:30%;
+  width:50%;
+}
+#login{
+  display: block;
+  background-color: lightblue;
+  height:30%;
+  width:50%;
+  margin: 0;
+  padding: 0;
+}
+.mainWrapper{
+  display:flex;
+
+
+
+
+}
+</style>
   </head>
     <body>
 
           <div class="mainWrapper">
-            <button class="buttonFrontPage">Login</button>&nbsp;&nbsp;<button class="buttonFrontPage">How to Play</button>&nbsp;&nbsp;<button class="buttonFrontPage">Highscore</button>
+              <button class="btnActive" id="btnOne">Login</button>&nbsp;&nbsp;<button  id="btnTwo">How to Play</button>&nbsp;&nbsp;<button  id="btnThree">Highscore</button>
+          </div>
+            <div class="mainWrapper">
+            <div id="login">
+              <span>Einloggen um zu Spielen</span></br>
+              <input type="text" id="usernameIN"></br>
+            <input type="submit" value="und los" id="playBTN">
+          </div>
+            <div id="help">How To Play</div>
+            <div id="highscore">Highscore</div>
           </div>
 
-            <div id="loginField">
+          <!--  <div id="loginField">
               <h3>Willkommen zum Spiel SuperHirn</h3>
               <label>USERNAME:</label></br>
               <input type="text" id="usernameIN" placeholder="Benutzername"></br>
               <input type="submit" id="playBTN" class="button" value="PLAY">
             </div>
+            //-->
+
       <!--MemberArea HTML Design//-->
         <div id="memberArea">
           <h1 class="helloUser"> Willkommen <span id="showUsername"> </span></h1>
