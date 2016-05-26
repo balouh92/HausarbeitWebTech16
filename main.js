@@ -19,18 +19,18 @@
                 var res = str.charAt(0);
                 // Filterungen
                 if (res != "+"){
-        //Wenn an erster Position eine 1 steht hat sich ein neuer user eingeloggt
-        if (res === "1"){
-        console.log("Neuer user eingeloggt: " + e.data);
-                var userOnline = localStorage.getItem("userCurrentlyOnline");
-                //  document.getElementById("memberArea").style.display = "block";
-                var toggleMArea = new toggleMemberArea();
-                localStorage.setItem("userCurrentlyOnline", parseInt(userOnline) + 1);
-                localStorage.setItem("neueruser", e.data);
-                //alert("neuer User ist beigetreten");
-        }
-        }
-        }
+                  //Wenn an erster Position eine 1 steht hat sich ein neuer user eingeloggt
+                  if (res === "1"){
+                    console.log("Neuer user eingeloggt: " + e.data);
+                    var userOnline = localStorage.getItem("userCurrentlyOnline");
+                    //  document.getElementById("memberArea").style.display = "block";
+                    var toggleMArea = new toggleMemberArea();
+                    localStorage.setItem("userCurrentlyOnline", parseInt(userOnline) + 1);
+                    localStorage.setItem("neueruser", e.data);
+                    //alert("neuer User ist beigetreten");
+                    }
+                  }
+                }
 
 
 
@@ -56,57 +56,106 @@
         var logout = new Logout(toggleArea);
                 logout.logoutPlayer();
         });
-                }
+        document.getElementById("singlePlayer").addEventListener("click",function(){
+          //  checkActiveGame();
+            var createGameBoard = new GameBoard("singlePlayer");
+            document.getElementById("singlePlayer").setAttribute("class", "btnActive");
+            createGameBoard.singlePlayer();
+
+          });
+        document.getElementById("multiPlayer").addEventListener("click",function(){
+          var createGameBoard = new GameBoard("multiPlayer");
+          document.getElementById("multiPlayer").setAttribute("class", "btnActive");
+          createGameBoard.multiPlayer();
+        });
+}
 window.addEventListener("load", init);
         //Login Klasse
-        class Login {
-        constructor(username, toggleArea){
-        this.username = username;
-                this.toggleArea = toggleArea;
-        }
-        setUsername(){
-            //Hat der Spieler überhaupt einen Usernamen eingegeben
-        if (this.username == "")
-        {
-            alert("Sie haben keinen Usernamen eingeben!");
-        } 
-        else{
-            if (localStorage.getItem("localUser") != null){
-            this.toggleArea.showMemberArea();
-        }
-        else{
-            localStorage.setItem("localUser", this.username);
-                    this.toggleArea.showMemberArea();
-            }
-        }
-
-        }
+class Login {
+  constructor(username, toggleArea){
+    this.username = username;
+    this.toggleArea = toggleArea;
+}
+setUsername(){
+//Hat der Spieler ï¿½berhaupt einen Usernamen eingegeben
+if (this.username == ""){
+  alert("Sie haben keinen Usernamen eingeben!");
+}
+else{
+  if (localStorage.getItem("localUser") != null){
+    this.toggleArea.showMemberArea();
+  }
+  else{
+    localStorage.setItem("localUser", this.username);
+    this.toggleArea.showMemberArea();
+  }
+}
+}
         getUsername(){
-        return this.username;
-        }
+          return this.username;
+          }
         }
 //Anzeigen des Login Feldes bzw. der MemberArea
 class ToggleMemberArea{
 constructor(){
-
 }
 showMemberArea(){
-document.getElementById("memberArea").style.display = "block";
-        document.getElementById("mainWrapper").style.display = "none";
+  document.getElementById("memberArea").style.display = "block";
+  document.getElementById("loginArea").style.display = "none";
+  var displayUserELement = document.getElementById("showUsername");
+  var displayUsername = document.createTextNode(localStorage.getItem("localUser"));
+  displayUserELement.appendChild(displayUsername);
 }
 showLoginArea(){
-document.getElementById("memberArea").style.display = "none";
-        document.getElementById("mainWrapper").style.display = "block";
+  document.getElementById("memberArea").style.display = "none";
+  document.getElementById("loginArea").style.display = "block";
 }
 
 }
 //logout Klasse
 class Logout {
 constructor(toggleArea) {
-this.toggleArea = toggleArea;
+  this.toggleArea = toggleArea;
 }
 logoutPlayer(){
-localStorage.removeItem("localUser");
-        this.toggleArea.showLoginArea();
+  localStorage.removeItem("localUser");
+  this.toggleArea.showLoginArea();
 }
+}
+class GameBoard{
+  constructor(gameStyle){
+    this.gameStyle = gameStyle;
+    console.log(this.gameStyle);
+    var documentFragement = document.createDocumentFragment();
+    var gameBoard = document.createElement("TABLE");
+    gameBoard.setAttribute("class",this.gameStyle);
+    for(var i = 0; i<8;i++){
+      var tableRow = document.createElement("TR");
+      for(var j=0;j<5;j++){
+        var tableData = document.createElement("TD");
+        tableData.setAttribute("align","center");
+        var roundDiv = document.createElement("DIV");
+        roundDiv.style.border = "1px solid black";
+        roundDiv.style.height = "30px";
+        roundDiv.style.width = "30px";
+        roundDiv.style.borderRadius  = "100%";
+        tableData.appendChild(roundDiv);
+        tableRow.appendChild(tableData);
+      }
+        documentFragement.appendChild(tableRow);
+
+      }
+      gameBoard.appendChild(documentFragement);
+      document.getElementById("gameBoard").appendChild(gameBoard);
+    }
+
+
+  singlePlayer(){
+    alert("Ein Neues Einzelspieler Modus Spiel wird erzeugt, bitte haben sie geduld");
+    localStorage.setItem("gameActive","singlePlayer");
+  }
+  multiPlayer(){
+    alert("Ein Neues Multispieler Modus Spiel wird erzeugt, bitte haben sie geduld");
+    localStorage.setItem("gameActive","multiPlayer");
+  }
 }

@@ -64,7 +64,7 @@ function init(){
 </style>
   </head>
     <body>
-          <div id="mainWrapper">
+          <section id="loginArea">
             <button class="btnActive" id="btnOne">Login</button>&nbsp;&nbsp;<button  id="btnTwo">How to Play</button>&nbsp;&nbsp;<button  id="btnThree">Highscore</button>
               <div id="login">
                 <span>Einloggen um zu Spielen</span></br>
@@ -73,89 +73,20 @@ function init(){
               </div>
             <div id="help">How To Play</div>
             <div id="highscore">Highscore</div>
-          </div>
+          </section>
 
       <!--MemberArea HTML Design//-->
-        <div id="memberArea">
+        <section id="memberArea">
           <h1 class="helloUser"> Willkommen <span id="showUsername"> </span></h1>
-          <span id="onlineUser">Eingeloggte Spieler: </span>&nbsp;<span id="nbrUserOnline"></span>
           <span id="clock"></span>
         <hr>
           <div id="navbar">
-            <button id="logout">Ausloggen</button></br>
-            <labal>bereit für ein Spiel?</label>
+            <button id="logout">Ausloggen</button><button id="singlePlayer">EInzelspieler Modus</button><button id="multiPlayer">Multiplayer Modus</button></br>
+            <label>bereit für ein Spiel?</label>
             <input type="checkbox" id="ready">
+            <div id="gameBoard"></div>
           </div>
-          <!-- Gameboard Template //-->
-          <div id="gameboard">
-          <table id="mastermindGameBoard">
-            <tr id="7">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="6">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr id="5">
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="4">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="3">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="2">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="1">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-
-            <tr id="activeRow" ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle">
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="rot"></div></td>
-		            <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="gelb" ></div></td>
-                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="grün"></div></td>
-                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="lila"></div></td>
-                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="blau"></div></td>
-                <td  ondragover="ablegenErlauben(event)" ondrop="ablegen(event)" align="middle"><div draggable="true" ondragstart="ziehen(event)" id="braun"></div></td>
-              </tr>
-          </table>
-          <button id="break">Pause</button><button id="start">wieder da</button><button id="check">Check</button>
-        </div>
-        </div>
+        </section>
     </body>
 
     </html>
