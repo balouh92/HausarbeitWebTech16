@@ -40,18 +40,7 @@
                 var login = new Login(username, toggleArea);
                 login.setUsername();
         });
-                function time() {
-                var now = new Date();
-                        var hours = now.getHours();
-                        var minutes = now.getMinutes();
-                        var seconds = now.getSeconds();
-                        var thetime = (hours < 10) ? "0" + hours + ":" : hours + ":";
-                        thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
-                        thetime += (seconds < 10) ? "0" + seconds : seconds;
-                        var clockDIV = document.getElementById("clock");
-                        clockDIV.innerHTML = thetime;
-                        var t = setTimeout(function(){ time() }, 500);
-                }
+
         document.getElementById("logout").addEventListener("click", function(){
         var logout = new Logout(toggleArea);
                 logout.logoutPlayer();
@@ -68,8 +57,10 @@
           document.getElementById("multiPlayer").setAttribute("class", "btnActive");
           createGameBoard.multiPlayer();
         });
+
 }
 window.addEventListener("load", init);
+
         //Login Klasse
 class Login {
   constructor(username, toggleArea){
@@ -125,37 +116,67 @@ logoutPlayer(){
 class GameBoard{
   constructor(gameStyle){
     this.gameStyle = gameStyle;
-    console.log(this.gameStyle);
     var documentFragement = document.createDocumentFragment();
     var gameBoard = document.createElement("TABLE");
+
     gameBoard.setAttribute("class",this.gameStyle);
+    gameBoard.style.borderSpacing ="0px";
     for(var i = 0; i<8;i++){
       var tableRow = document.createElement("TR");
-      for(var j=0;j<5;j++){
+      for(var j=0;j<4;j++){
         var tableData = document.createElement("TD");
+        var bowls = document.createElement("DIV");
+        bowls.setAttribute("class","bowls");
+        tableData.setAttribute("class","gameData")
+        tableData.setAttribute("id",i + ""+j)
         tableData.setAttribute("align","center");
-        var roundDiv = document.createElement("DIV");
-        roundDiv.style.border = "1px solid black";
-        roundDiv.style.height = "30px";
-        roundDiv.style.width = "30px";
-        roundDiv.style.borderRadius  = "100%";
-        tableData.appendChild(roundDiv);
+        tableData.appendChild(bowls);
         tableRow.appendChild(tableData);
       }
         documentFragement.appendChild(tableRow);
-
       }
+
       gameBoard.appendChild(documentFragement);
       document.getElementById("gameBoard").appendChild(gameBoard);
+      var indikatorBoard = document.createElement("TABLE");
+      indikatorBoard.style.borderSpacing = "0px"
+      for(var i=0;i<16;i++){
+        var indikatorRow = document.createElement("TR");
+        for(var j=0;j<2;j++){
+          var indikatorData = document.createElement("TD");
+          var indikatorBowls = document.createElement("DIV");
+          indikatorBowls.setAttribute("class","indikatorBowls");
+          indikatorData.setAttribute("align","center");
+          indikatorData.setAttribute("id",i + ""+j)
+          indikatorData.setAttribute("class","indikatorData");
+          indikatorData.appendChild(indikatorBowls);
+          indikatorBoard.appendChild(indikatorRow);
+          indikatorRow.appendChild(indikatorData);
+          document.getElementById("gameBoard").appendChild(indikatorBoard);
+        }
+      }
+
     }
-
-
   singlePlayer(){
-    alert("Ein Neues Einzelspieler Modus Spiel wird erzeugt, bitte haben sie geduld");
     localStorage.setItem("gameActive","singlePlayer");
+    var tds = document.getElementsByTagName('td');
+
+  for (var i = 0; i < tds.length; i++) {
+      tds[i].addEventListener("click",clickHandler);
   }
+
+  function clickHandler(event) {
+      alert(event.target.innerHTML = "dies");
+  }
+}
+
+
+
+
+
   multiPlayer(){
-    alert("Ein Neues Multispieler Modus Spiel wird erzeugt, bitte haben sie geduld");
+
+
     localStorage.setItem("gameActive","multiPlayer");
   }
 }

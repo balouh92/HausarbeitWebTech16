@@ -4,11 +4,44 @@ html,body{
   min-height: 100%;
   background-color: #f3f3f3;
 }
+#gameBoard{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.indikatorData{
+    border:1px solid black;
+    width:23px;
+    height:23px;
+}
+.gameBoard td {
+	border: 1px solid black;
+	cursor: crosshair;
+
+}
+.gameData{
+  border:1px solid black;
+}
+.bowls{
+  width:40px;
+  height:40px;
+  background-color: lightgrey;
+  border:1px solid grey;
+  border-radius: 100%;
+
+}
+.indikatorBowls{
+  width:20px;
+  height:20px;
+  background-color: lightgrey;
+  border:1px solid grey;
+
+  border-radius: 100%;
+}
 td{
   background-color: lightgrey;
   height:50px;
   width:50px;
-  align:middle;
   border:1px solid lightgrey;
 }
 .notactive{
