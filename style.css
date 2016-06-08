@@ -10,14 +10,9 @@ html,body{
   align-items: center;
 }
 .indikatorData{
-    border:1px solid black;
-    width:23px;
-    height:23px;
-}
-.gameBoard td {
-	border: 1px solid black;
-	cursor: crosshair;
-
+  border:1px solid black;
+  width:23px;
+  height:23px;
 }
 .gameData{
   border:1px solid black;
@@ -25,101 +20,56 @@ html,body{
 .bowls{
   width:40px;
   height:40px;
-  background-color: lightgrey;
+  background-color: white;
   border:1px solid grey;
   border-radius: 100%;
-
 }
 .indikatorBowls{
   width:20px;
   height:20px;
-  background-color: lightgrey;
+  background-color: white;
   border:1px solid grey;
-
   border-radius: 100%;
 }
 td{
   background-color: lightgrey;
   height:50px;
   width:50px;
-  border:1px solid lightgrey;
+  border: 1px solid black;
+  cursor: crosshair;
 }
 .notactive{
   border:1px solid red;
 }
-#rot{
-  border-radius:100%;
-  background-color: red;
-  height: 25px;
-  width: 25px;
-}
-#braun{
-  border-radius:100%;
-  background-color: brown;
-  height: 25px;
-  width: 25px;
-}
-#blau{
-  border-radius:100%;
-  background-color: blue;
-  height: 25px;
-  width: 25px;
-}
-#gelb{
-  border-radius:100%;
-  background-color: yellow;
-  height: 25px;
-  width: 25px;
-}
-#grün{
-  border-radius:100%;
-  background-color: green;
-  height: 25px;
-  width: 25px;
-}
-#lila{
-  border-radius:100%;
-  background-color: purple;
-  height: 25px;
-  width: 25px;
-}
-
-#loginField{
-  width:50%;
-  background: #00ffff;
-  margin-left:auto;
-  margin-right: auto;
-  text-align: center;
-}
 button {
-    background-color: #0096E5; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 4px 2px;
-    cursor: pointer;
+  background-color: #0096E5; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 4px 2px;
+  cursor: pointer;
 
 }
 button:hover{
-    background-color: #005DE5; /* Green */
-    color:#fff;
+  background-color: #005DE5; /* Green */
+  color:#fff;
 }
 .btnActive{
-    background-color: #005DE5; /* Green */
-    color:#fff;
+  background-color: #005DE5; /* Green */
+  color:#fff;
 }
 input[type=text] {
   width:50%;
-   padding: 12px 20px;
-   margin: 8px 0;
-   box-sizing: border-box;
-   border: none;
-   background-color: #e6e6fa;
-   color: black;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #e6e6fa;
+  color: black;
  }
 #memberArea{
   width:75%;
